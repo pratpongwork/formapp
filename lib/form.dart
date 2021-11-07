@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class Formapp extends StatefulWidget {
@@ -8,6 +10,8 @@ class Formapp extends StatefulWidget {
 }
 
 class _FormappState extends State<Formapp> {
+  final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
