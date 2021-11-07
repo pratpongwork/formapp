@@ -88,12 +88,20 @@ class _FormappState extends State<Formapp> {
                             }),
                         SizedBox(
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               formkey.currentState!.validate();
                               formkey.currentState!.save();
                               print("${mystudent.fname}");
                               print("${mystudent.lname}");
                               print("${mystudent.email}");
+
+                              await _studentCollection.doc(mystudent.fname).set(
+                                {
+                                  "fname": mystudent.fname,
+                                  "lname": mystudent.lname,
+                                  "email": mystudent.email,
+                                },
+                              );
                             },
                             child: Text("บันทึก"),
                           ),
