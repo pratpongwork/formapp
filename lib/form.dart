@@ -10,6 +10,28 @@ class Formapp extends StatefulWidget {
 class _FormappState extends State<Formapp> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("SAVE"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Form(
+            child: Column(
+          children: [
+            Text(
+              "Name",
+              style: TextStyle(fontSize: 20),
+            ),
+            TextFormField(),
+            SizedBox(height: 15),
+            Text(
+              "Surname",
+              style: TextStyle(fontSize: 20),
+            ),
+          ],
+        )),
+      ),
+    );
   }
 }
