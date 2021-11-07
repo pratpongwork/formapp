@@ -24,59 +24,60 @@ class _FormappState extends State<Formapp> {
       body: Container(
         padding: EdgeInsets.all(20),
         child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    "Name",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  TextFormField(
-                    validator: RequiredValidator(errorText: "No info"),
-                    onSaved: (String? fname) {
-                      mystudent.fname = fname;
+          key: formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  "Name",
+                  style: TextStyle(fontSize: 20),
+                ),
+                TextFormField(
+                  validator: RequiredValidator(errorText: "No info"),
+                  onSaved: (String? fname) {
+                    mystudent.fname = fname;
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  "Surname",
+                  style: TextStyle(fontSize: 20),
+                ),
+                TextFormField(
+                  onSaved: (String? lname) {
+                    mystudent.lname = lname;
+                  },
+                ),
+                SizedBox(height: 15),
+                Text(
+                  "E-mail",
+                  style: TextStyle(fontSize: 20),
+                ),
+                TextFormField(
+                  validator: MultiValidator([
+                    RequiredValidator(errorText: "No info"),
+                    EmailValidator(errorText: "Pls use email")
+                  ]),
+                  onSaved: (String? email) {
+                    mystudent.email = email;
+                  },
+                ),
+                SizedBox(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      formKey.currentState!.validate();
+                      formKey.currentState!.save();
+                      print("${mystudent.fname}");
+                      print("${mystudent.lname}");
+                      print("${mystudent.email}");
                     },
+                    child: Text('SAVE'),
                   ),
-                  SizedBox(height: 15),
-                  Text(
-                    "Surname",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  TextFormField(
-                    onSaved: (String? lname) {
-                      mystudent.lname = lname;
-                    },
-                  ),
-                  SizedBox(height: 15),
-                  Text(
-                    "E-mail",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  TextFormField(
-                    validator: MultiValidator([
-                      RequiredValidator(errorText: "No info"),
-                      EmailValidator(errorText: "Pls use email")
-                    ]),
-                    onSaved: (String? email) {
-                      mystudent.email = email;
-                    },
-                  ),
-                  SizedBox(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        formKey.currentState!.validate();
-                        formKey.currentState!.save();
-                        print("${mystudent.fname}");
-                        print("${mystudent.lname}");
-                        print("${mystudent.email}");
-                      },
-                      child: Text('SAVE'),
-                    ),
-                  ),
-                ],
-              ),
-            )),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
