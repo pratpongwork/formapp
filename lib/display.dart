@@ -27,6 +27,21 @@ class _DisplayState extends State<Display> {
                 child: CircularProgressIndicator(),
               );
             }
+            return ListView(
+                children: snapshot.data!.docs.map((document) {
+              return Container(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: FittedBox(
+                      child: Text("Hello"),
+                    ),
+                  ),
+                  title: Text(document["fname"] + ' ' + document["lname"]),
+                  subtitle: Text(document["email"]),
+                ),
+              );
+            }).toList());
           }),
     );
   }
