@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:formapp/model/model.dart';
@@ -57,7 +57,12 @@ class _FormappState extends State<Formapp> {
                 ),
                 SizedBox(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      formKey.currentState!.save();
+                      print("${mystudent.fname}");
+                      print("${mystudent.lname}");
+                      print("${mystudent.email}");
+                    },
                     child: Text('SAVE'),
                   ),
                 ),
