@@ -23,7 +23,21 @@ class _FormappState extends State<Formapp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FutureBuilder(
+      future: firebase,
+      builder: (context.snapshot) {
+        if (snapshot.hasErrors) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("ERROR"),
+            ),
+            body: Center(
+              child: Text("${snapshot.error}"),
+            ),
+          );
+        }
+        if (snapshot.connectinState == ConnectinState.done) {
+          return  Scaffold(
       appBar: AppBar(
         title: Text("SAVE"),
       ),
@@ -86,5 +100,15 @@ class _FormappState extends State<Formapp> {
         ),
       ),
     );
+        }
+          return Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+      } );
+    
+    
+    
   }
 }
