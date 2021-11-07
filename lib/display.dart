@@ -28,20 +28,21 @@ class _DisplayState extends State<Display> {
               );
             }
             return ListView(
-                children: snapshot.data!.docs.map((document) {
-              return Container(
-                child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: FittedBox(
-                      child: Text("Hello"),
+              children: snapshot.data!.docs.map((document) {
+                return Container(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: FittedBox(
+                        child: Text("Hello"),
+                      ),
                     ),
+                    title: Text(document["fname"] + ' ' + document["lname"]),
+                    subtitle: Text(document["email"]),
                   ),
-                  title: Text(document["fname"] + ' ' + document["lname"]),
-                  subtitle: Text(document["email"]),
-                ),
-              );
-            }).toList());
+                );
+              }).toList(),
+            );
           }),
     );
   }
