@@ -32,7 +32,7 @@ class _FormappState extends State<Formapp> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
-                  validator: RequiredValidator(errText: "No info"),
+                  validator: RequiredValidator(errorText: "No info"),
                   onSaved: (String? fname) {
                     mystudent.fname = fname;
                   },
@@ -53,9 +53,9 @@ class _FormappState extends State<Formapp> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
-                  validator: MultiFormValidators([
-                    RequiredValidator(errText: "No info"),
-                    EmailValidator(errText: "Pls use email")
+                  validator: MultiValidator([
+                    RequiredValidator(errorText: "No info"),
+                    EmailValidator(errorText: "Pls use email")
                   ]),
                   onSaved: (String? email) {
                     mystudent.email = email;
