@@ -23,93 +23,94 @@ class _FormappState extends State<Formapp> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: firebase,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Scaffold(
-              appBar: AppBar(
-                title: Text("error"),
-              ),
-              body: Center(
-                child: Text("${snapshot.error}"),
-              ),
-            );
-          }
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Scaffold(
-              appBar: AppBar(
-                title: Text("บันทึก"),
-              ),
-              body: Container(
-                padding: EdgeInsets.all(20),
-                child: Form(
-                    key: formkey,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Text(
-                            "ชื่อ",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          TextFormField(
-                              validator: RequiredValidator(
-                                  errorText: "กรุณากรอกข้อมูล"),
-                              onSaved: (String? fname) {
-                                mystudent.fname = fname;
-                              }),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            "นามสกุล",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          TextFormField(
-                              validator: RequiredValidator(
-                                  errorText: "กรุณากรอกข้อมูล"),
-                              onSaved: (String? lname) {
-                                mystudent.lname = lname;
-                              }),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            "อีเมล",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          TextFormField(
-                              validator: MultiValidator([
-                                RequiredValidator(errorText: "กรุณากรอกข้อมูล"),
-                                EmailValidator(
-                                    errorText: "กรุณากรอกในรูปแบบของอีเมล")
-                              ]),
-                              onSaved: (String? email) {
-                                mystudent.email = email;
-                              }),
-                          SizedBox(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                formkey.currentState!.validate();
-                                formkey.currentState!.save();
-                                print("${mystudent.fname}");
-                                print("${mystudent.lname}");
-                                print("${mystudent.email}");
-                              },
-                              child: Text("บันทึก"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
-            );
-          }
-
+      future: firebase,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
           return Scaffold(
+            appBar: AppBar(
+              title: Text("error"),
+            ),
             body: Center(
-              child: CircularProgressIndicator(),
+              child: Text("${snapshot.error}"),
             ),
           );
-        });
+        }
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("บันทึก"),
+            ),
+            body: Container(
+              padding: EdgeInsets.all(20),
+              child: Form(
+                  key: formkey,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Text(
+                          "ชื่อ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        TextFormField(
+                            validator:
+                                RequiredValidator(errorText: "กรุณากรอกข้อมูล"),
+                            onSaved: (String? fname) {
+                              mystudent.fname = fname;
+                            }),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "นามสกุล",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        TextFormField(
+                            validator:
+                                RequiredValidator(errorText: "กรุณากรอกข้อมูล"),
+                            onSaved: (String? lname) {
+                              mystudent.lname = lname;
+                            }),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "อีเมล",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        TextFormField(
+                            validator: MultiValidator([
+                              RequiredValidator(errorText: "กรุณากรอกข้อมูล"),
+                              EmailValidator(
+                                  errorText: "กรุณากรอกในรูปแบบของอีเมล")
+                            ]),
+                            onSaved: (String? email) {
+                              mystudent.email = email;
+                            }),
+                        SizedBox(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              formkey.currentState!.validate();
+                              formkey.currentState!.save();
+                              print("${mystudent.fname}");
+                              print("${mystudent.lname}");
+                              print("${mystudent.email}");
+                            },
+                            child: Text("บันทึก"),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
+            ),
+          );
+        }
+
+        return Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+    );
   }
 }
