@@ -29,6 +29,19 @@ class _FormappState extends State<Formapp> {
               "Surname",
               style: TextStyle(fontSize: 20),
             ),
+            TextFormField(),
+            SizedBox(height: 15),
+            Text(
+              "E-mail",
+              style: TextStyle(fontSize: 20),
+            ),
+            TextFormField(),
+            SizedBox(
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('SAVE'),
+              ),
+            ),
           ],
         )),
       ),
