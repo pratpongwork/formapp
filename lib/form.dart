@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:formapp/model/model.dart';
 
 class Formapp extends StatefulWidget {
   const Formapp({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class Formapp extends StatefulWidget {
 
 class _FormappState extends State<Formapp> {
   final formkey = GlobalKey<FormState>();
+  Students mystudent = Students();
 
   @override
   Widget build(BuildContext context) {
