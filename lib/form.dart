@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:formapp/model/model.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class Formapp extends StatefulWidget {
   const Formapp({Key? key}) : super(key: key);
@@ -31,6 +32,7 @@ class _FormappState extends State<Formapp> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: RequiredValidator(errText: "No info"),
                   onSaved: (String? fname) {
                     mystudent.fname = fname;
                   },
@@ -51,6 +53,10 @@ class _FormappState extends State<Formapp> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: MultiFormValidators([
+                    RequiredValidator(errText: "No info"),
+                    EmailValidator(errText: "Pls use email")
+                  ]),
                   onSaved: (String? email) {
                     mystudent.email = email;
                   },
@@ -58,6 +64,7 @@ class _FormappState extends State<Formapp> {
                 SizedBox(
                   child: ElevatedButton(
                     onPressed: () {
+                      formKey.currentState!.validate();
                       formKey.currentState!.save();
                       print("${mystudent.fname}");
                       print("${mystudent.lname}");
