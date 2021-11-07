@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:formapp/model/model.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -14,6 +16,10 @@ class Formapp extends StatefulWidget {
 class _FormappState extends State<Formapp> {
   final formKey = GlobalKey<FormState>();
   Students mystudent = Students();
+
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference _studentsCollection =
+      new FirebaseFirestore.instance.collection("students");
 
   @override
   Widget build(BuildContext context) {
