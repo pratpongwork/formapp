@@ -40,13 +40,21 @@ class _FormappState extends State<Formapp> {
                   "Surname",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? lname) {
+                    mystudent.lname = lname;
+                  },
+                ),
                 SizedBox(height: 15),
                 Text(
                   "E-mail",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? email) {
+                    mystudent.email = email;
+                  },
+                ),
                 SizedBox(
                   child: ElevatedButton(
                     onPressed: () {},
