@@ -2,6 +2,7 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:formapp/display.dart';
 import 'package:formapp/form.dart';
 
 void main() async {
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 2,
       child: Scaffold(
         body: TabBarView(
-          children: [Formapp(), Container()],
+          children: [Formapp(), Display()],
         ),
         bottomNavigationBar: TabBar(
           tabs: [
