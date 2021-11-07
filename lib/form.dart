@@ -19,7 +19,7 @@ class _FormappState extends State<Formapp> {
 
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
   CollectionReference _studentsCollection =
-      new FirebaseFirestore.instance.collection("students");
+      FirebaseFirestore.instance.collection("students");
 
   @override
   Widget build(BuildContext context) {
